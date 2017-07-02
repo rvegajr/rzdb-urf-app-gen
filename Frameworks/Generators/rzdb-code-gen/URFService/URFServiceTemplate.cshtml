@@ -19,12 +19,15 @@ using Service.Pattern;
 
 namespace Service
 {
+    /// <summary></summary>
     public interface I<t/>@key.ToSingular()Service : IService<@key.ToSingular()>
     {
     }
 
+    /// <summary></summary>
     public partial class @key.ToSingular()Service : Service<@key.ToSingular()>, I<t/>@key.ToSingular()Service
     {
+        /// <summary></summary>
         public @key.ToSingular()Service(IRepositoryAsync<@key.ToSingular()> repository) : base(repository)
         {
         }

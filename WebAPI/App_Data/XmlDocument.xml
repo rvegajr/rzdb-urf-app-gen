@@ -4,93 +4,129 @@
         <name>WebApi</name>
     </assembly>
     <members>
-        <member name="M:WebAPI.Models.UnityConfig.GetConfiguredContainer">
+        <member name="T:WebApi.UnityConfigRegistrations">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.UnityConfigRegistrations.RegisterTypes(Microsoft.Practices.Unity.IUnityContainer)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.UnityConfigRegistrations.RegisterTypesOwin(Microsoft.Practices.Unity.IUnityContainer)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.UnityConfigRegistrations.RegisterTypes(Microsoft.Practices.Unity.IUnityContainer,WebApi.UnityRegistrationLifetimeManagerType)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.UnityConfig.GetConfiguredContainer">
             <summary>
             Gets the configured Unity container.
             </summary>
         </member>
-        <member name="T:WebAPI.CustomUnityDependencyResolver">
+        <member name="T:WebApi.UnityRegistrationLifetimeManagerType">
+            <summary></summary>
+        </member>
+        <member name="F:WebApi.UnityRegistrationLifetimeManagerType.PerRequest">
+            <summary></summary>
+        </member>
+        <member name="F:WebApi.UnityRegistrationLifetimeManagerType.ContainerControlled">
+            <summary></summary>
+        </member>
+        <member name="F:WebApi.UnityRegistrationLifetimeManagerType.NotControlled">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.UnityConfigRegistrationsGenerated">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.UnityConfigRegistrationsGenerated.RegisterTypes(Microsoft.Practices.Unity.IUnityContainer)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.UnityConfigRegistrationsGenerated.RegisterTypesOwin(Microsoft.Practices.Unity.IUnityContainer)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.UnityConfigRegistrationsGenerated.RegisterTypes(Microsoft.Practices.Unity.IUnityContainer,WebApi.UnityRegistrationLifetimeManagerType)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.CustomUnityDependencyResolver">
             <summary>
             An implementation of the <see cref="T:System.Web.Http.Dependencies.IDependencyResolver"/> interface that wraps a Unity container.
-            Thank you https://damienbod.com/2013/10/01/self-host-webapi-with-owin-and-unity/
+            Thank you https://damienbod.com/2013/10/01/self-host-WebApi-with-owin-and-unity/
             
             </summary>
         </member>
-        <member name="M:WebAPI.CustomUnityDependencyResolver.#ctor(Microsoft.Practices.Unity.IUnityContainer)">
+        <member name="M:WebApi.CustomUnityDependencyResolver.#ctor(Microsoft.Practices.Unity.IUnityContainer)">
             <summary>
-            Initializes a new instance of the <see cref="T:WebAPI.CustomUnityDependencyResolver"/> class for a container.
+            Initializes a new instance of the <see cref="T:WebApi.CustomUnityDependencyResolver"/> class for a container.
             </summary>
             <param name="container">The <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/> to wrap with the <see cref="T:System.Web.Http.Dependencies.IDependencyResolver"/>
             interface implementation.</param>
         </member>
-        <member name="M:WebAPI.CustomUnityDependencyResolver.BeginScope">
+        <member name="M:WebApi.CustomUnityDependencyResolver.BeginScope">
             <summary>
             Reuses the same scope to resolve all the instances.
             </summary>
             <returns>The shared dependency scope.</returns>
         </member>
-        <member name="M:WebAPI.CustomUnityDependencyResolver.Dispose">
+        <member name="M:WebApi.CustomUnityDependencyResolver.Dispose">
             <summary>
             Disposes the wrapped <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/>.
             </summary>
         </member>
-        <member name="M:WebAPI.CustomUnityDependencyResolver.GetService(System.Type)">
+        <member name="M:WebApi.CustomUnityDependencyResolver.GetService(System.Type)">
             <summary>
             Resolves an instance of the default requested type from the container.
             </summary>
             <param name="serviceType">The <see cref="T:System.Type"/> of the object to get from the container.</param>
             <returns>The requested object.</returns>
         </member>
-        <member name="M:WebAPI.CustomUnityDependencyResolver.GetServices(System.Type)">
+        <member name="M:WebApi.CustomUnityDependencyResolver.GetServices(System.Type)">
             <summary>
             Resolves multiply registered services.
             </summary>
             <param name="serviceType">The type of the requested services.</param>
             <returns>The requested services.</returns>
         </member>
-        <member name="T:WebAPI.UnityWebActivator">
+        <member name="T:WebApi.UnityWebActivator">
             <summary>Provides the bootstrapping for integrating Unity with ASP.NET MVC.</summary>
         </member>
-        <member name="M:WebAPI.UnityWebActivator.Start">
+        <member name="M:WebApi.UnityWebActivator.Start">
             <summary>Integrates Unity when the application starts.</summary>
         </member>
-        <member name="M:WebAPI.UnityWebActivator.Shutdown">
+        <member name="M:WebApi.UnityWebActivator.Shutdown">
             <summary>Disposes the Unity container when the application is shut down.</summary>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+        <member name="M:WebApi.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
             <summary>
             Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
             </summary>
             <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
             <returns>The ID as a string.</returns>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.HelpPageConfig">
+        <member name="T:WebApi.Areas.HelpPage.HelpPageConfig">
             <summary>
             Use this class to customize the Help Page.
             For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
             or you can provide the samples for the requests/responses.
             </summary>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.Controllers.HelpController">
+        <member name="T:WebApi.Areas.HelpPage.Controllers.HelpController">
             <summary>
             The controller that will handle requests for the help page.
             </summary>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
             <summary>
             Sets the documentation provider for help page.
             </summary>
             <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
             <param name="documentationProvider">The documentation provider.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
             <summary>
             Sets the objects that will be used by the formatters to produce sample requests/responses.
             </summary>
             <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
             <param name="sampleObjects">The sample objects.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
             <summary>
             Sets the sample request directly for the specified media type and action.
             </summary>
@@ -100,7 +136,7 @@
             <param name="controllerName">Name of the controller.</param>
             <param name="actionName">Name of the action.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
             <summary>
             Sets the sample request directly for the specified media type and action with parameters.
             </summary>
@@ -111,7 +147,7 @@
             <param name="actionName">Name of the action.</param>
             <param name="parameterNames">The parameter names.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
             <summary>
             Sets the sample request directly for the specified media type of the action.
             </summary>
@@ -121,7 +157,7 @@
             <param name="controllerName">Name of the controller.</param>
             <param name="actionName">Name of the action.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
             <summary>
             Sets the sample response directly for the specified media type of the action with specific parameters.
             </summary>
@@ -132,7 +168,7 @@
             <param name="actionName">Name of the action.</param>
             <param name="parameterNames">The parameter names.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
             <summary>
             Sets the sample directly for all actions with the specified media type.
             </summary>
@@ -140,7 +176,7 @@
             <param name="sample">The sample.</param>
             <param name="mediaType">The media type.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
             <summary>
             Sets the sample directly for all actions with the specified type and media type.
             </summary>
@@ -149,7 +185,7 @@
             <param name="mediaType">The media type.</param>
             <param name="type">The parameter type or return type of an action.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
             <summary>
             Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
             The help page will use this information to produce more accurate request samples.
@@ -159,7 +195,7 @@
             <param name="controllerName">Name of the controller.</param>
             <param name="actionName">Name of the action.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
             <summary>
             Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
             The help page will use this information to produce more accurate request samples.
@@ -170,7 +206,7 @@
             <param name="actionName">Name of the action.</param>
             <param name="parameterNames">The parameter names.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
             <summary>
             Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
             The help page will use this information to produce more accurate response samples.
@@ -180,7 +216,7 @@
             <param name="controllerName">Name of the controller.</param>
             <param name="actionName">Name of the action.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
             <summary>
             Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
             The help page will use this information to produce more accurate response samples.
@@ -191,162 +227,162 @@
             <param name="actionName">Name of the action.</param>
             <param name="parameterNames">The parameter names.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
             <summary>
             Gets the help page sample generator.
             </summary>
             <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
             <returns>The help page sample generator.</returns>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,WebAPI.Areas.HelpPage.HelpPageSampleGenerator)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,WebApi.Areas.HelpPage.HelpPageSampleGenerator)">
             <summary>
             Sets the help page sample generator.
             </summary>
             <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
             <param name="sampleGenerator">The help page sample generator.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
             <summary>
             Gets the model description generator.
             </summary>
             <param name="config">The configuration.</param>
-            <returns>The <see cref="T:WebAPI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+            <returns>The <see cref="T:WebApi.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
             <summary>
             Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
             </summary>
             <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
             <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
             <returns>
-            An <see cref="T:WebAPI.Areas.HelpPage.Models.HelpPageApiModel"/>
+            An <see cref="T:WebApi.Areas.HelpPage.Models.HelpPageApiModel"/>
             </returns>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.ModelDescriptions.ModelDescription">
+        <member name="T:WebApi.Areas.HelpPage.ModelDescriptions.ModelDescription">
             <summary>
             Describes a type model.
             </summary>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+        <member name="T:WebApi.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
             <summary>
             Generates model descriptions for given types.
             </summary>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+        <member name="T:WebApi.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
             <summary>
-            Use this attribute to change the name of the <see cref="T:WebAPI.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            Use this attribute to change the name of the <see cref="T:WebApi.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
             </summary>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.Models.HelpPageApiModel">
+        <member name="T:WebApi.Areas.HelpPage.Models.HelpPageApiModel">
             <summary>
             The model that represents an API displayed on the help page.
             </summary>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+        <member name="M:WebApi.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:WebAPI.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            Initializes a new instance of the <see cref="T:WebApi.Areas.HelpPage.Models.HelpPageApiModel"/> class.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+        <member name="P:WebApi.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
             <summary>
-            Gets or sets the <see cref="P:WebAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            Gets or sets the <see cref="P:WebApi.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+        <member name="P:WebApi.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
             <summary>
-            Gets or sets the <see cref="T:WebAPI.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            Gets or sets the <see cref="T:WebApi.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+        <member name="P:WebApi.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
             <summary>
             Gets or sets the documentation for the request.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+        <member name="P:WebApi.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
             <summary>
-            Gets or sets the <see cref="T:WebAPI.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            Gets or sets the <see cref="T:WebApi.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+        <member name="P:WebApi.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
             <summary>
             Gets the request body parameter descriptions.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+        <member name="P:WebApi.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
             <summary>
-            Gets or sets the <see cref="T:WebAPI.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            Gets or sets the <see cref="T:WebApi.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+        <member name="P:WebApi.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
             <summary>
             Gets the resource property descriptions.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+        <member name="P:WebApi.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
             <summary>
             Gets the sample requests associated with the API.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+        <member name="P:WebApi.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
             <summary>
             Gets the sample responses associated with the API.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+        <member name="P:WebApi.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
             <summary>
             Gets the error messages associated with this model.
             </summary>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.HelpPageSampleGenerator">
+        <member name="T:WebApi.Areas.HelpPage.HelpPageSampleGenerator">
             <summary>
             This class will generate the samples for the help page.
             </summary>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:WebAPI.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            Initializes a new instance of the <see cref="T:WebApi.Areas.HelpPage.HelpPageSampleGenerator"/> class.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+        <member name="P:WebApi.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
             <summary>
             Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+        <member name="P:WebApi.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
             <summary>
             Gets the objects that are used directly as samples for certain actions.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+        <member name="P:WebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
             <summary>
             Gets the objects that are serialized as samples by the supported formatters.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+        <member name="P:WebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
             <summary>
             Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
             stopping when the factory successfully returns a non-<see langref="null"/> object.
             </summary>
             <remarks>
-            Collection includes just <see cref="M:WebAPI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            Collection includes just <see cref="M:WebApi.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
             <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
             <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
             <summary>
             Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
             </summary>
             <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
             <returns>The samples keyed by media type.</returns>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
             <summary>
             Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
             </summary>
             <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
             <returns>The samples keyed by media type.</returns>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,WebAPI.Areas.HelpPage.SampleDirection)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,WebApi.Areas.HelpPage.SampleDirection)">
             <summary>
             Gets the request or response body samples.
             </summary>
@@ -354,9 +390,9 @@
             <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
             <returns>The samples keyed by media type.</returns>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,WebAPI.Areas.HelpPage.SampleDirection)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,WebApi.Areas.HelpPage.SampleDirection)">
             <summary>
-            Search for samples that are provided directly through <see cref="P:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            Search for samples that are provided directly through <see cref="P:WebApi.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
             </summary>
             <param name="controllerName">Name of the controller.</param>
             <param name="actionName">Name of the action.</param>
@@ -367,24 +403,24 @@
             <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
             <returns>The sample that matches the parameters.</returns>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
             <summary>
             Gets the sample object that will be serialized by the formatters. 
-            First, it will look at the <see cref="P:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
-            one using <see cref="M:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(WebAPI.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:WebAPI.Areas.HelpPage.ObjectGenerator"/>) and other
-            factories in <see cref="P:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            First, it will look at the <see cref="P:WebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:WebApi.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(WebApi.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:WebApi.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:WebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
             </summary>
             <param name="type">The type.</param>
             <returns>The sample object.</returns>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
             <summary>
             Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
             </summary>
             <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
             <returns>The type.</returns>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},WebAPI.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},WebApi.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
             <summary>
             Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
             </summary>
@@ -395,7 +431,7 @@
             <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
             <param name="formatters">The formatters.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
             <summary>
             Writes the sample object using formatter.
             </summary>
@@ -405,44 +441,44 @@
             <param name="mediaType">Type of the media.</param>
             <returns></returns>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.HelpPageSampleKey">
+        <member name="T:WebApi.Areas.HelpPage.HelpPageSampleKey">
             <summary>
             This is used to identify the place where the sample should be applied.
             </summary>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
             <summary>
-            Creates a new <see cref="T:WebAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            Creates a new <see cref="T:WebApi.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
             </summary>
             <param name="mediaType">The media type.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
             <summary>
-            Creates a new <see cref="T:WebAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            Creates a new <see cref="T:WebApi.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
             </summary>
             <param name="mediaType">The media type.</param>
             <param name="type">The CLR type.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(WebAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(WebApi.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
             <summary>
-            Creates a new <see cref="T:WebAPI.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:WebAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            Creates a new <see cref="T:WebApi.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:WebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
             </summary>
-            <param name="sampleDirection">The <see cref="P:WebAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="sampleDirection">The <see cref="P:WebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
             <param name="controllerName">Name of the controller.</param>
             <param name="actionName">Name of the action.</param>
             <param name="parameterNames">The parameter names.</param>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,WebAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+        <member name="M:WebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,WebApi.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
             <summary>
-            Creates a new <see cref="T:WebAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:WebAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            Creates a new <see cref="T:WebApi.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:WebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
             </summary>
             <param name="mediaType">The media type.</param>
-            <param name="sampleDirection">The <see cref="P:WebAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="sampleDirection">The <see cref="P:WebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
             <param name="controllerName">Name of the controller.</param>
             <param name="actionName">Name of the action.</param>
             <param name="parameterNames">The parameter names.</param>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+        <member name="P:WebApi.Areas.HelpPage.HelpPageSampleKey.ControllerName">
             <summary>
             Gets the name of the controller.
             </summary>
@@ -450,7 +486,7 @@
             The name of the controller.
             </value>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.HelpPageSampleKey.ActionName">
+        <member name="P:WebApi.Areas.HelpPage.HelpPageSampleKey.ActionName">
             <summary>
             Gets the name of the action.
             </summary>
@@ -458,7 +494,7 @@
             The name of the action.
             </value>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.HelpPageSampleKey.MediaType">
+        <member name="P:WebApi.Areas.HelpPage.HelpPageSampleKey.MediaType">
             <summary>
             Gets the media type.
             </summary>
@@ -466,38 +502,38 @@
             The media type.
             </value>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+        <member name="P:WebApi.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
             <summary>
             Gets the parameter names.
             </summary>
         </member>
-        <member name="P:WebAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+        <member name="P:WebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
             <summary>
-            Gets the <see cref="P:WebAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            Gets the <see cref="P:WebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
             </summary>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.ImageSample">
+        <member name="T:WebApi.Areas.HelpPage.ImageSample">
             <summary>
             This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
             </summary>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.ImageSample.#ctor(System.String)">
+        <member name="M:WebApi.Areas.HelpPage.ImageSample.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:WebAPI.Areas.HelpPage.ImageSample"/> class.
+            Initializes a new instance of the <see cref="T:WebApi.Areas.HelpPage.ImageSample"/> class.
             </summary>
             <param name="src">The URL of an image.</param>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.InvalidSample">
+        <member name="T:WebApi.Areas.HelpPage.InvalidSample">
             <summary>
             This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
             </summary>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.ObjectGenerator">
+        <member name="T:WebApi.Areas.HelpPage.ObjectGenerator">
             <summary>
             This class will create an object of a given type and populate it with sample data.
             </summary>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+        <member name="M:WebApi.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
             <summary>
             Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
             Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
@@ -513,26 +549,1094 @@
             <param name="type">The type.</param>
             <returns>An object of the given type.</returns>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.SampleDirection">
+        <member name="T:WebApi.Areas.HelpPage.SampleDirection">
             <summary>
             Indicates whether the sample is used for request or response
             </summary>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.TextSample">
+        <member name="T:WebApi.Areas.HelpPage.TextSample">
             <summary>
             This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
             </summary>
         </member>
-        <member name="T:WebAPI.Areas.HelpPage.XmlDocumentationProvider">
+        <member name="T:WebApi.Areas.HelpPage.XmlDocumentationProvider">
             <summary>
             A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
             </summary>
         </member>
-        <member name="M:WebAPI.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+        <member name="M:WebApi.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:WebAPI.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            Initializes a new instance of the <see cref="T:WebApi.Areas.HelpPage.XmlDocumentationProvider"/> class.
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:WebApi.Controllers.BuyingGroupsController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.BuyingGroupsController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IBuyingGroupService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.BuyingGroupsController.GetBuyingGroups">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.BuyingGroupsController.GetBuyingGroupFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.BuyingGroupsController.GetBuyingGroup(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.BuyingGroupsController.Put(System.Int32,DataAccess.Models.BuyingGroup)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.BuyingGroupsController.Post(DataAccess.Models.BuyingGroup)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.BuyingGroupsController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.BuyingGroup})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.BuyingGroupsController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.BuyingGroupsController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.BuyingGroupsController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.CitiesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CitiesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.ICityService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CitiesController.GetCities">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CitiesController.GetCityFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CitiesController.GetCity(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CitiesController.Put(System.Int32,DataAccess.Models.City)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CitiesController.Post(DataAccess.Models.City)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CitiesController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.City})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CitiesController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CitiesController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CitiesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.ColdRoomTemperaturesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColdRoomTemperaturesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IColdRoomTemperatureService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColdRoomTemperaturesController.GetColdRoomTemperatures">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColdRoomTemperaturesController.GetColdRoomTemperatureFromId(System.Int64)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColdRoomTemperaturesController.GetColdRoomTemperature(System.Int64)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColdRoomTemperaturesController.Put(System.Int64,DataAccess.Models.ColdRoomTemperature)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColdRoomTemperaturesController.Post(DataAccess.Models.ColdRoomTemperature)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColdRoomTemperaturesController.Patch(System.Int64,System.Web.OData.Delta{DataAccess.Models.ColdRoomTemperature})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColdRoomTemperaturesController.Delete(System.Int64)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColdRoomTemperaturesController.ItemExists(System.Int64)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColdRoomTemperaturesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.ColorsController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColorsController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IColorService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColorsController.GetColors">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColorsController.GetColorFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColorsController.GetColor(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColorsController.Put(System.Int32,DataAccess.Models.Color)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColorsController.Post(DataAccess.Models.Color)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColorsController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.Color})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColorsController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColorsController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.ColorsController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.CountriesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CountriesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.ICountryService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CountriesController.GetCountries">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CountriesController.GetCountryFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CountriesController.GetCountry(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CountriesController.Put(System.Int32,DataAccess.Models.Country)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CountriesController.Post(DataAccess.Models.Country)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CountriesController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.Country})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CountriesController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CountriesController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CountriesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.CustomerCategoriesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerCategoriesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.ICustomerCategoryService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerCategoriesController.GetCustomerCategories">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerCategoriesController.GetCustomerCategoryFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerCategoriesController.GetCustomerCategory(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerCategoriesController.Put(System.Int32,DataAccess.Models.CustomerCategory)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerCategoriesController.Post(DataAccess.Models.CustomerCategory)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerCategoriesController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.CustomerCategory})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerCategoriesController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerCategoriesController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerCategoriesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.CustomersController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomersController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.ICustomerService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomersController.GetCustomers">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomersController.GetCustomerFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomersController.GetCustomer(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomersController.Put(System.Int32,DataAccess.Models.Customer)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomersController.Post(DataAccess.Models.Customer)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomersController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.Customer})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomersController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomersController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomersController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.CustomerTransactionsController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerTransactionsController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.ICustomerTransactionService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerTransactionsController.GetCustomerTransactions">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerTransactionsController.GetCustomerTransactionFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerTransactionsController.GetCustomerTransaction(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerTransactionsController.Put(System.Int32,DataAccess.Models.CustomerTransaction)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerTransactionsController.Post(DataAccess.Models.CustomerTransaction)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerTransactionsController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.CustomerTransaction})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerTransactionsController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerTransactionsController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.CustomerTransactionsController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.DeliveryMethodsController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.DeliveryMethodsController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IDeliveryMethodService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.DeliveryMethodsController.GetDeliveryMethods">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.DeliveryMethodsController.GetDeliveryMethodFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.DeliveryMethodsController.GetDeliveryMethod(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.DeliveryMethodsController.Put(System.Int32,DataAccess.Models.DeliveryMethod)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.DeliveryMethodsController.Post(DataAccess.Models.DeliveryMethod)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.DeliveryMethodsController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.DeliveryMethod})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.DeliveryMethodsController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.DeliveryMethodsController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.DeliveryMethodsController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.InvoiceLinesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoiceLinesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IInvoiceLineService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoiceLinesController.GetInvoiceLines">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoiceLinesController.GetInvoiceLineFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoiceLinesController.GetInvoiceLine(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoiceLinesController.Put(System.Int32,DataAccess.Models.InvoiceLine)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoiceLinesController.Post(DataAccess.Models.InvoiceLine)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoiceLinesController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.InvoiceLine})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoiceLinesController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoiceLinesController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoiceLinesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.InvoicesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoicesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IInvoiceService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoicesController.GetInvoices">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoicesController.GetInvoiceFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoicesController.GetInvoice(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoicesController.Put(System.Int32,DataAccess.Models.Invoice)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoicesController.Post(DataAccess.Models.Invoice)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoicesController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.Invoice})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoicesController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoicesController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.InvoicesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.OrderLinesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrderLinesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IOrderLineService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrderLinesController.GetOrderLines">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrderLinesController.GetOrderLineFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrderLinesController.GetOrderLine(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrderLinesController.Put(System.Int32,DataAccess.Models.OrderLine)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrderLinesController.Post(DataAccess.Models.OrderLine)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrderLinesController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.OrderLine})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrderLinesController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrderLinesController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrderLinesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.OrdersController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrdersController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IOrderService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrdersController.GetOrders">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrdersController.GetOrderFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrdersController.GetOrder(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrdersController.Put(System.Int32,DataAccess.Models.Order)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrdersController.Post(DataAccess.Models.Order)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrdersController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.Order})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrdersController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrdersController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.OrdersController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.PackageTypesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PackageTypesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IPackageTypeService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PackageTypesController.GetPackageTypes">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PackageTypesController.GetPackageTypeFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PackageTypesController.GetPackageType(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PackageTypesController.Put(System.Int32,DataAccess.Models.PackageType)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PackageTypesController.Post(DataAccess.Models.PackageType)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PackageTypesController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.PackageType})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PackageTypesController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PackageTypesController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PackageTypesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.PaymentMethodsController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PaymentMethodsController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IPaymentMethodService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PaymentMethodsController.GetPaymentMethods">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PaymentMethodsController.GetPaymentMethodFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PaymentMethodsController.GetPaymentMethod(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PaymentMethodsController.Put(System.Int32,DataAccess.Models.PaymentMethod)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PaymentMethodsController.Post(DataAccess.Models.PaymentMethod)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PaymentMethodsController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.PaymentMethod})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PaymentMethodsController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PaymentMethodsController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PaymentMethodsController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.PeopleController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PeopleController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IPersonService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PeopleController.GetPeople">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PeopleController.GetPersonFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PeopleController.GetPerson(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PeopleController.Put(System.Int32,DataAccess.Models.Person)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PeopleController.Post(DataAccess.Models.Person)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PeopleController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.Person})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PeopleController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PeopleController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PeopleController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.PurchaseOrderLinesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrderLinesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IPurchaseOrderLineService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrderLinesController.GetPurchaseOrderLines">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrderLinesController.GetPurchaseOrderLineFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrderLinesController.GetPurchaseOrderLine(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrderLinesController.Put(System.Int32,DataAccess.Models.PurchaseOrderLine)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrderLinesController.Post(DataAccess.Models.PurchaseOrderLine)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrderLinesController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.PurchaseOrderLine})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrderLinesController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrderLinesController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrderLinesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.PurchaseOrdersController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrdersController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IPurchaseOrderService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrdersController.GetPurchaseOrders">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrdersController.GetPurchaseOrderFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrdersController.GetPurchaseOrder(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrdersController.Put(System.Int32,DataAccess.Models.PurchaseOrder)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrdersController.Post(DataAccess.Models.PurchaseOrder)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrdersController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.PurchaseOrder})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrdersController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrdersController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.PurchaseOrdersController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.SpecialDealsController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SpecialDealsController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.ISpecialDealService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SpecialDealsController.GetSpecialDeals">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SpecialDealsController.GetSpecialDealFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SpecialDealsController.GetSpecialDeal(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SpecialDealsController.Put(System.Int32,DataAccess.Models.SpecialDeal)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SpecialDealsController.Post(DataAccess.Models.SpecialDeal)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SpecialDealsController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.SpecialDeal})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SpecialDealsController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SpecialDealsController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SpecialDealsController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.StateProvincesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StateProvincesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IStateProvinceService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StateProvincesController.GetStateProvinces">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StateProvincesController.GetStateProvinceFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StateProvincesController.GetStateProvince(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StateProvincesController.Put(System.Int32,DataAccess.Models.StateProvince)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StateProvincesController.Post(DataAccess.Models.StateProvince)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StateProvincesController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.StateProvince})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StateProvincesController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StateProvincesController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StateProvincesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.StockGroupsController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockGroupsController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IStockGroupService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockGroupsController.GetStockGroups">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockGroupsController.GetStockGroupFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockGroupsController.GetStockGroup(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockGroupsController.Put(System.Int32,DataAccess.Models.StockGroup)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockGroupsController.Post(DataAccess.Models.StockGroup)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockGroupsController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.StockGroup})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockGroupsController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockGroupsController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockGroupsController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.StockItemHoldingsController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemHoldingsController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IStockItemHoldingService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemHoldingsController.GetStockItemHoldings">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemHoldingsController.GetStockItemHoldingFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemHoldingsController.GetStockItemHolding(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemHoldingsController.Put(System.Int32,DataAccess.Models.StockItemHolding)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemHoldingsController.Post(DataAccess.Models.StockItemHolding)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemHoldingsController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.StockItemHolding})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemHoldingsController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemHoldingsController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemHoldingsController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.StockItemsController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemsController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IStockItemService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemsController.GetStockItems">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemsController.GetStockItemFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemsController.GetStockItem(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemsController.Put(System.Int32,DataAccess.Models.StockItem)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemsController.Post(DataAccess.Models.StockItem)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemsController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.StockItem})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemsController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemsController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemsController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.StockItemStockGroupsController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemStockGroupsController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IStockItemStockGroupService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemStockGroupsController.GetStockItemStockGroups">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemStockGroupsController.GetStockItemStockGroupFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemStockGroupsController.GetStockItemStockGroup(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemStockGroupsController.Put(System.Int32,DataAccess.Models.StockItemStockGroup)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemStockGroupsController.Post(DataAccess.Models.StockItemStockGroup)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemStockGroupsController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.StockItemStockGroup})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemStockGroupsController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemStockGroupsController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemStockGroupsController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.StockItemTransactionsController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemTransactionsController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IStockItemTransactionService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemTransactionsController.GetStockItemTransactions">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemTransactionsController.GetStockItemTransactionFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemTransactionsController.GetStockItemTransaction(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemTransactionsController.Put(System.Int32,DataAccess.Models.StockItemTransaction)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemTransactionsController.Post(DataAccess.Models.StockItemTransaction)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemTransactionsController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.StockItemTransaction})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemTransactionsController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemTransactionsController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.StockItemTransactionsController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.SupplierCategoriesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierCategoriesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.ISupplierCategoryService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierCategoriesController.GetSupplierCategories">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierCategoriesController.GetSupplierCategoryFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierCategoriesController.GetSupplierCategory(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierCategoriesController.Put(System.Int32,DataAccess.Models.SupplierCategory)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierCategoriesController.Post(DataAccess.Models.SupplierCategory)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierCategoriesController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.SupplierCategory})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierCategoriesController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierCategoriesController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierCategoriesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.SuppliersController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SuppliersController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.ISupplierService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SuppliersController.GetSuppliers">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SuppliersController.GetSupplierFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SuppliersController.GetSupplier(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SuppliersController.Put(System.Int32,DataAccess.Models.Supplier)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SuppliersController.Post(DataAccess.Models.Supplier)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SuppliersController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.Supplier})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SuppliersController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SuppliersController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SuppliersController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.SupplierTransactionsController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierTransactionsController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.ISupplierTransactionService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierTransactionsController.GetSupplierTransactions">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierTransactionsController.GetSupplierTransactionFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierTransactionsController.GetSupplierTransaction(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierTransactionsController.Put(System.Int32,DataAccess.Models.SupplierTransaction)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierTransactionsController.Post(DataAccess.Models.SupplierTransaction)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierTransactionsController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.SupplierTransaction})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierTransactionsController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierTransactionsController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SupplierTransactionsController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.SystemParametersController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SystemParametersController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.ISystemParameterService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SystemParametersController.GetSystemParameters">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SystemParametersController.GetSystemParameterFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SystemParametersController.GetSystemParameter(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SystemParametersController.Put(System.Int32,DataAccess.Models.SystemParameter)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SystemParametersController.Post(DataAccess.Models.SystemParameter)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SystemParametersController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.SystemParameter})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SystemParametersController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SystemParametersController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.SystemParametersController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.TransactionTypesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.TransactionTypesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.ITransactionTypeService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.TransactionTypesController.GetTransactionTypes">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.TransactionTypesController.GetTransactionTypeFromId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.TransactionTypesController.GetTransactionType(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.TransactionTypesController.Put(System.Int32,DataAccess.Models.TransactionType)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.TransactionTypesController.Post(DataAccess.Models.TransactionType)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.TransactionTypesController.Patch(System.Int32,System.Web.OData.Delta{DataAccess.Models.TransactionType})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.TransactionTypesController.Delete(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.TransactionTypesController.ItemExists(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.TransactionTypesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.VehicleTemperaturesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VehicleTemperaturesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IVehicleTemperatureService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VehicleTemperaturesController.GetVehicleTemperatures">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VehicleTemperaturesController.GetVehicleTemperatureFromId(System.Int64)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VehicleTemperaturesController.GetVehicleTemperature(System.Int64)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VehicleTemperaturesController.Put(System.Int64,DataAccess.Models.VehicleTemperature)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VehicleTemperaturesController.Post(DataAccess.Models.VehicleTemperature)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VehicleTemperaturesController.Patch(System.Int64,System.Web.OData.Delta{DataAccess.Models.VehicleTemperature})">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VehicleTemperaturesController.Delete(System.Int64)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VehicleTemperaturesController.ItemExists(System.Int64)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VehicleTemperaturesController.Dispose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.VwCustomersController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VwCustomersController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IVwCustomerService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VwCustomersController.GetVwCustomers">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VwCustomersController.GetVwCustomerFromId(System.Int32,System.String,System.String,System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VwCustomersController.GetVwCustomer(System.Int32,System.String,System.String,System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.VwSuppliersController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VwSuppliersController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IVwSupplierService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VwSuppliersController.GetVwSuppliers">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VwSuppliersController.GetVwSupplierFromId(System.Int32,System.String,System.String,System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VwSuppliersController.GetVwSupplier(System.Int32,System.String,System.String,System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="T:WebApi.Controllers.VwVehicleTemperaturesController">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VwVehicleTemperaturesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IVwVehicleTemperatureService)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VwVehicleTemperaturesController.GetVwVehicleTemperatures">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VwVehicleTemperaturesController.GetVwVehicleTemperatureFromId(System.Int64,System.String,System.Int32,System.DateTime,System.Decimal)">
+            <summary></summary>
+        </member>
+        <member name="M:WebApi.Controllers.VwVehicleTemperaturesController.GetVwVehicleTemperature(System.Int64,System.String,System.Int32,System.DateTime,System.Decimal)">
+            <summary></summary>
         </member>
         <member name="T:RouteConfig">
             <summary />

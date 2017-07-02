@@ -19,7 +19,7 @@ namespace Tests
         //thanks! http://stackoverflow.com/questions/4364665/static-destructor
         static WebApiTestBaseClass()
         {
-            TestServer = TestServer.Create<CppeDb.WebApi.Owin.Startup>();
+            TestServer = TestServer.Create<WebApi.Owin.Startup>();
             HttpClient = new HttpClient(TestServer.Handler);
         }
 

@@ -33,16 +33,34 @@ namespace Tests.RouteTests
                 Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Orders with Expand of Customer");
             }
 
-            using (var response = await HttpClient.GetAsync("http://testserver/api/Orders?%24expand=Employee&%24top=10"))
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Orders?%24expand=LastEditedBy&%24top=10"))
             {
                 var result = await response.Content.ReadAsStringAsync();
-                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Orders with Expand of Employee");
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Orders with Expand of LastEditedBy");
             }
 
-            using (var response = await HttpClient.GetAsync("http://testserver/api/Orders?%24expand=Shipper&%24top=10"))
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Orders?%24expand=ContactPersonID&%24top=10"))
             {
                 var result = await response.Content.ReadAsStringAsync();
-                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Orders with Expand of Shipper");
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Orders with Expand of ContactPersonID");
+            }
+
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Orders?%24expand=PickedByPersonID&%24top=10"))
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Orders with Expand of PickedByPersonID");
+            }
+
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Orders?%24expand=SalespersonPersonID&%24top=10"))
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Orders with Expand of SalespersonPersonID");
+            }
+
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Orders?%24expand=Order&%24top=10"))
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Orders with Expand of Order");
             }
  
         }

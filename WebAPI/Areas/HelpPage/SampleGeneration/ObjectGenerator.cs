@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace WebAPI.Areas.HelpPage
+namespace WebApi.Areas.HelpPage
 {
     /// <summary>
     /// This class will create an object of a given type and populate it with sample data.
@@ -436,7 +436,7 @@ namespace WebAPI.Areas.HelpPage
                     { 
                         typeof(Uri), index =>
                         {
-                            return new Uri(String.Format(CultureInfo.CurrentCulture, "http://webapihelppage{0}.com", index));
+                            return new Uri(String.Format(CultureInfo.CurrentCulture, "http://WebApihelppage{0}.com", index));
                         }
                     },
                 };

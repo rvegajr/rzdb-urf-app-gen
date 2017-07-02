@@ -49,11 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\NW.Context.cs" />
-    <Compile Include="Models\NW.Designer.cs">
+    <Compile Include="Models\WideWorldImporters.Context.cs" />
+    <Compile Include="Models\WideWorldImporters.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NW.edmx</DependentUpon>
+      <DependentUpon>WideWorldImporters.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,12 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="Models\NW.edmx">
+    <EntityDeploy Include="Models\WideWorldImporters.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NW.Designer.cs</LastGenOutput>
+      <LastGenOutput>WideWorldImporters.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\NW.edmx.diagram">
-      <DependentUpon>NW.edmx</DependentUpon>
+    <None Include="Models\WideWorldImporters.edmx.diagram">
+      <DependentUpon>WideWorldImporters.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -75,19 +75,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\NW.CodeGenerations.tt">
+    <Content Include="Models\CodeGenerations.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>NW.CodeGenerations.txt</LastGenOutput>
+      <LastGenOutput>CodeGenerations.txt</LastGenOutput>
     </Content>
-    <Content Include="Models\NW.CodeGenerations.txt">
+    <Content Include="Models\CodeGenerations.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NW.CodeGenerations.tt</DependentUpon>
+      <DependentUpon>CodeGenerations.tt</DependentUpon>
     </Content>
-    <Compile Include="Models\Generated\*">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Frameworks\Generators\rzdb-code-gen\RzDbCodeGen.csproj">
@@ -100,4 +96,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Models\Generated\*.cs" />
+  </ItemGroup>
 </Project>

@@ -4,11 +4,11 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Dependencies;
 using Microsoft.Practices.Unity;
 
-namespace WebAPI
+namespace WebApi
 {
     /// <summary>
     /// An implementation of the <see cref="IDependencyResolver"/> interface that wraps a Unity container.
-    /// Thank you https://damienbod.com/2013/10/01/self-host-webapi-with-owin-and-unity/
+    /// Thank you https://damienbod.com/2013/10/01/self-host-WebApi-with-owin-and-unity/
     /// 
     /// </summary>
     public sealed class CustomUnityDependencyResolver : IDependencyResolver

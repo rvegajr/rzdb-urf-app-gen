@@ -15,14 +15,18 @@ using Repository.Pattern.Ef6;
 //------------------------------------------------------------------------------
 namespace DataAccess.Models
 {
+    /// <summary></summary>
     public partial class @_Model.Name : DataContext
     {
+        /// <summary></summary>
         public @_Model.Name<t/>() : base("name=@_Model.Name"){}
 
+        /// <summary></summary>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }
          @foreach (string key in _Model.Entities.Keys) {<t>
+        /// <summary></summary>
         public virtual DbSet<@key.ToSingular()> @key { get; set; } </t>}
     }
 }

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using DataAccess.Models;
 
-namespace WebAPI
+namespace WebApi
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

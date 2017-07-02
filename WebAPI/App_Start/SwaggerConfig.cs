@@ -12,7 +12,7 @@ using Swashbuckle.Application;
 using Swashbuckle.OData;
 using Swashbuckle.Swagger;
 
-namespace WebAPI
+namespace WebApi
 {
     public class SwaggerConfig
     {
@@ -37,7 +37,7 @@ namespace WebAPI
                     // hold additional metadata for an API. Version and title are required but you can also provide
                     // additional fields by chaining methods off SingleApiVersion.
                     //
-                    c.SingleApiVersion("api", "WebAPI");
+                    c.SingleApiVersion("api", "WebApi");
 
                     // If your API has multiple versions, use "MultipleApiVersions" instead of "SingleApiVersion".
                     // In this case, you must provide a lambda that tells Swashbuckle which actions should be

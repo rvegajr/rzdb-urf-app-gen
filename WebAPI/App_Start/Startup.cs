@@ -7,9 +7,9 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
 
-[assembly: OwinStartup(typeof(WebAPI.Owin.Startup))]
+[assembly: OwinStartup(typeof(WebApi.Owin.Startup))]
 
-namespace WebAPI.Owin
+namespace WebApi.Owin
 {
     public class Startup
     {

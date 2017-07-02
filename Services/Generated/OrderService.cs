@@ -14,12 +14,15 @@ using Service.Pattern;
 
 namespace Service
 {
+    /// <summary></summary>
     public interface IOrderService : IService<Order>
     {
     }
 
+    /// <summary></summary>
     public partial class OrderService : Service<Order>, IOrderService
     {
+        /// <summary></summary>
         public OrderService(IRepositoryAsync<Order> repository) : base(repository)
         {
         }

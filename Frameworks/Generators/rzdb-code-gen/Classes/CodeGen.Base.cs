@@ -6,22 +6,26 @@ using System.Linq;
 using System.IO;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.XPath;
+using RazorEngine;
+using RazorEngine.Compilation.ImpromptuInterface.InvokeExt;
 using RazorEngine.Configuration;
 using RazorEngine.Templating;
 using RazorEngine.Text;
-using System.Security.Policy;
-using System.Security;
-using System.Web.Razor;
-using RazorEngine;
+using RzDb.CodeGen;
 
 namespace RzDb.CodeGen
 {
-
     public abstract class EdmxCodeGenBase
     {
         public virtual string EdmxPath { get; set; } = "";
         public virtual string TemplatePath { get; set; } = "";
         public virtual string OutputPath { get; set; } = "";
+
+        public string[] AllowedKeys(SchemaData model)
+        {
+            return model.Keys.Where(k => !k.EndsWith("_Archive", StringComparison.OrdinalIgnoreCase)).ToArray();
+        }
 
         public EdmxCodeGenBase(string edmxPath, string templatePath, string outputPath)
         {
@@ -38,32 +42,36 @@ namespace RzDb.CodeGen
                             System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase)).Replace("file:\\", "");
                 string FullTemplatePath = assemblyBasePath + Path.DirectorySeparatorChar + TemplatePath;
                 string outputDirectory = Path.GetDirectoryName(OutputPath) + Path.DirectorySeparatorChar;
-                var filefound = false;
-                filefound = (File.Exists(EdmxPath));
-                if (!filefound)
-                {
-                    EdmxPath = EdmxPath.Replace("file:\\", "");
-                    filefound = (File.Exists(EdmxPath));
-                }
-                if (!filefound) throw new FileNotFoundException("EdmxPath File " + EdmxPath + " is not found");
+                if (!File.Exists(EdmxPath)) throw new FileNotFoundException("EdmxPath File " + EdmxPath + " is not found");
                 if (!File.Exists(FullTemplatePath)) throw new FileNotFoundException("Template File " + FullTemplatePath + " is not found");
                 if (!Directory.Exists(outputDirectory)) throw new DirectoryNotFoundException("Path " + outputDirectory + " is not found");
                 Tuple<MetadataWorkspace, SchemaData> metadataPayload = LoadEdmx(EdmxPath);
                 SchemaData schema = metadataPayload.Item2;
-                if (schema.Entities.ContainsKey("sysdiagrams")) schema.Entities.Remove("sysdiagrams");
+                if (schema.ContainsKey("sysdiagrams")) schema.Entities.Remove("sysdiagrams");
+                //REMOVE TEMPORAL TABLES
+                var temporal = schema.Keys.Where(k => k.EndsWith("_Archive", StringComparison.OrdinalIgnoreCase)).ToArray();
+                foreach (var t in temporal)
+                {
+                    schema.Entities.Remove(t);
+                }
+
                 string result = "";
                 try
                 {
                     TemplateServiceConfiguration config = new TemplateServiceConfiguration();
                     config.EncodedStringFactory = new RawStringFactory(); // Raw string encoding.
                     config.Debug = true;
+
                     IRazorEngineService service = RazorEngineService.Create(config);
-                    Engine.Razor = service;
-                    result = Engine.Razor.RunCompile(new LoadedTemplateSource(File.ReadAllText(FullTemplatePath), FullTemplatePath), "RzDbCodeGen", typeof(SchemaData), schema);
+                    result = service.RunCompile(
+                        new LoadedTemplateSource(File.ReadAllText(FullTemplatePath), FullTemplatePath), "templateKey",
+                        typeof(SchemaData), schema);
                 }
                 catch (Exception exRazerEngine)
                 {
-                    throw exRazerEngine;
+                    Console.WriteLine(exRazerEngine.Message);
+                    throw;
+                    //throw exRazerEngine;
                 }
                 finally
                 {
@@ -76,11 +84,10 @@ namespace RzDb.CodeGen
                         }
                         catch
                         {
-
+                            
                         }
                     }
                 }
-
                 result = result.Replace("<t>", "")
                     .Replace("<t/>", "")
                     .Replace("<t />", "")
@@ -88,7 +95,7 @@ namespace RzDb.CodeGen
                     .Replace("$OUTPUT_PATH$", outputDirectory).TrimStart();
                 if (result.Contains("##FILE=")) //File seperation specifier - this will split by the files specified by 
                 {
-                    string[] parseFiles = result.Split(new[] { @"##FILE=" }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] parseFiles = result.Split(new[] {@"##FILE="}, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string filePart in parseFiles)
                     {
                         int nl = filePart.IndexOf('\n');
@@ -100,18 +107,24 @@ namespace RzDb.CodeGen
                         }
                     }
                 }
-                else
+                else if (!string.IsNullOrEmpty(result))
                 {
                     if (File.Exists(OutputPath)) File.Delete(OutputPath);
                     File.WriteAllText(OutputPath, result);
+                }
+                else
+                {
+                    throw new  ApplicationException("The Razor Engine Produced No results for path [" + FullTemplatePath + "] \nusing EDMX Path[" + EdmxPath + "].");
                 }
                 return true;
             }
             catch (Exception ex)
             {
-                throw ex;
+                Console.WriteLine(ex.Message);
+                throw;
             }
         }
+
 
         private Tuple<MetadataWorkspace, SchemaData> LoadEdmx(string path)
         {
@@ -152,7 +165,11 @@ namespace RzDb.CodeGen
                         XElement nodEle = (XElement)nod;
                         if (nodEle.Name.LocalName == "EntityType")
                         {
-                            EntityType entityType = new EntityType() { Name = nodEle.Attribute("Name").Value };
+                            CodeGen.EntityType entityType = new CodeGen.EntityType() { Name = nodEle.Attribute("Name").Value };
+                            if (entityType.Name.StartsWith("VwCustomers"))
+                            {
+                                entityType.Name = entityType.Name + "";
+                            }
                             List<string> primaryKeyList = new List<string>();
                             foreach (XNode member in ((XElement)nod).Nodes())
                             {
@@ -175,8 +192,7 @@ namespace RzDb.CodeGen
                                         if ((nodMember.Attribute("StoreGeneratedPattern") != null) && (nodMember.Attribute("StoreGeneratedPattern").Equals("Identity")))
                                             property.IsIdentity = true;
                                         entityType.Properties.Add(property.Name, property);
-                                    }
-                                    else if (nodMember.Name.LocalName == "Key")
+                                    } else if (nodMember.Name.LocalName == "Key")
                                     {
                                         foreach (XNode nodKey in ((XElement)nodMember).Nodes())
                                         {
@@ -187,13 +203,13 @@ namespace RzDb.CodeGen
                                     }
 
                                 }
-                                foreach (string primaryKeyName in primaryKeyList)
+                            }
+                            foreach (string primaryKeyName in primaryKeyList)
+                            {
+                                if (entityType.Properties.ContainsKey(primaryKeyName))
                                 {
-                                    if (entityType.Properties.ContainsKey(primaryKeyName))
-                                    {
-                                        entityType.Properties[primaryKeyName].IsKey = true;
-                                        entityType.PrimaryKeys.Add(entityType.Properties[primaryKeyName]);
-                                    }
+                                    entityType.Properties[primaryKeyName].IsKey = true;
+                                    entityType.PrimaryKeys.Add(entityType.Properties[primaryKeyName]);
                                 }
                             }
                             schema.Add(entityType.Name, entityType);
@@ -222,7 +238,7 @@ namespace RzDb.CodeGen
                     {
                         if ((s.BuiltInTypeKind == BuiltInTypeKind.EntitySet) || (s.BuiltInTypeKind == BuiltInTypeKind.EntityType) || (s.BuiltInTypeKind == BuiltInTypeKind.EntitySetBase))
                         {
-                            if (s.Name.StartsWith("DrillGroupPeer"))
+                            if (s.Name.StartsWith("VwCustomers"))
                             {
                                 var Name = (s.Name + " ").Trim();
                             }
@@ -233,52 +249,64 @@ namespace RzDb.CodeGen
                                 {
                                     //Thank you http://stackoverflow.com/questions/5365708/ef4-get-the-linked-column-names-from-navigationproperty-of-an-edmx
                                     AssociationType association = mdRet.GetItems<AssociationType>(DataSpace.CSpace).Single(a => a.Name == navProperty.RelationshipType.Name);
-                                    if ( association.ReferentialConstraints.Count > 0 )
+                                    string fromEntity = association.ReferentialConstraints[0].FromRole.Name;
+                                    string fromEntityField = association.ReferentialConstraints[0].FromProperties[0].Name;
+                                    string toEntity = association.ReferentialConstraints[0].ToRole.Name;
+                                    string toEntityField = association.ReferentialConstraints[0].ToProperties[0].Name;
+                                    string toEntityColumnName = toEntityField.Replace("Id", "").Replace("UID", "");
+                                    string fromEntityColumnName = fromEntityField.Replace("Id", "").Replace("UID", "");
+                                    var ns = new XmlNamespaceManager(new NameTable());
+                                    ns.AddNamespace("edmx", "http://schemas.microsoft.com/ado/2009/11/edm");
+                                    var r = entitySets.First(a => a.Name == navProperty.RelationshipType.Name);
+                                    //Figure out the real entity names based off the end keys
+                                    var ends = ((System.Data.Entity.Core.Metadata.Edm.AssociationSet)r).AssociationSetEnds;
+                                    if (ends!=null)
                                     {
-                                        string fromEntity = association.ReferentialConstraints[0].FromRole.Name;
-                                        string fromEntityField = association.ReferentialConstraints[0].FromProperties[0].Name;
-                                        string toEntity = association.ReferentialConstraints[0].ToRole.Name;
-                                        string toEntityField = association.ReferentialConstraints[0].ToProperties[0].Name;
-                                        string toEntityColumnName = toEntityField.Replace("Id", "");
-                                        string fromEntityColumnName = fromEntityField.Replace("Id", "");
-                                        var ns = new XmlNamespaceManager(new NameTable());
-                                        ns.AddNamespace("edmx", "http://schemas.microsoft.com/ado/2009/11/edm");
-                                        var r = entitySets.First(a => a.Name == navProperty.RelationshipType.Name);
-                                        //Figure out the real entity names based off the end keys
-                                        var ends = ((System.Data.Entity.Core.Metadata.Edm.AssociationSet)r).AssociationSetEnds;
-                                        if (ends != null)
-                                        {
-                                            var fromEnd = ends.First(e => e.Name == fromEntity);
-                                            if (fromEnd != null) fromEntity = fromEnd.EntitySet.Name;
-                                            var toEnd = ends.First(e => e.Name == toEntity);
-                                            if (toEnd != null) toEntity = toEnd.EntitySet.Name;
-                                        }
-
-                                        var newRel = new Relationship()
-                                        {
-                                            Name = navProperty.RelationshipType.Name,
-                                            FromTableName = fromEntity,
-                                            FromFieldName = fromEntityField,
-                                            ToFieldName = toEntityField,
-                                            ToTableName = toEntity,
-                                            ToColumnName = toEntityColumnName,
-                                            Type = navProperty.FromEndMember.RelationshipMultiplicity.ToString() + " to " + navProperty.ToEndMember.RelationshipMultiplicity.ToString()
-                                        };
-                                        schema[s.Name].Relationships.Add(newRel);
-                                        var fieldToMarkRelation = (s.Name.Equals(newRel.FromTableName) ? newRel.FromFieldName : newRel.ToFieldName);
-                                        if (schema[s.Name].Properties.ContainsKey(fieldToMarkRelation))
-                                        {
-                                            schema[s.Name].Properties[fieldToMarkRelation].RelatedTo.Add(newRel);
-                                        }
+                                        var fromEnd = ends.First(e => e.Name == fromEntity);
+                                        if (fromEnd != null) fromEntity = fromEnd.EntitySet.Name;
+                                        var toEnd = ends.First(e => e.Name == toEntity);
+                                        if (toEnd != null) toEntity = toEnd.EntitySet.Name;
                                     }
 
+                                    var newRel = new Relationship() {
+                                        Name = navProperty.RelationshipType.Name , FromTableName = fromEntity , FromFieldName = fromEntityField, ToFieldName = toEntityField,
+                                        ToTableName = toEntity, ToColumnName = toEntityColumnName,
+                                        Type = navProperty.FromEndMember.RelationshipMultiplicity.ToString() + " to " + navProperty.ToEndMember.RelationshipMultiplicity.ToString()
+                                    };
+                                    schema[s.Name].Relationships.Add(newRel);
+                                    var fieldToMarkRelation = (s.Name.Equals(newRel.FromTableName) ? newRel.FromFieldName : newRel.ToFieldName);
+                                    if (schema[s.Name].Properties.ContainsKey(fieldToMarkRelation))
+                                    {
+                                        schema[s.Name].Properties[fieldToMarkRelation].RelatedTo.Add(newRel);
+                                    }
                                 }
                             }
                         }
                     }
                     catch (Exception exE)
                     {
-                        throw exE;
+                        Console.WriteLine(exE.Message);
+                        throw;
+                    }
+                }
+
+                //Go through Edmx and get the type of object of each entity.  Important because we do different things when we mess with views
+                XElement xeele = runtime.Elements().First(e => e.Name.LocalName == "StorageModels")
+                    .Elements().First(e => e.Name.LocalName == "Schema")
+                    .Elements().First(e => e.Name.LocalName == "EntityContainer");
+                foreach (var item in xeele.Nodes())
+                {
+                    XElement ele = (XElement)item;
+                    if (ele.Attribute("Name")==null)
+                    {
+                        Console.WriteLine("Error: could not read Name Attribute");
+                    }
+                    var name = ele.Attribute("Name").Value;
+                    XNamespace w = "http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator";
+                    var entityType = ele.Attribute(w + "Type");
+                    if (entityType != null)
+                    {
+                        if (schema.ContainsKey(name)) schema[name].Type = entityType.Value.ToSingular();
                     }
                 }
 
@@ -286,35 +314,11 @@ namespace RzDb.CodeGen
             }
             catch (Exception ex)
             {
-                throw ex;
+                Console.Write(ex.Message);
+                throw;
             }
         }
 
-        public static AppDomain SandboxCreator()
-        {
-            Evidence ev = new Evidence();
-            ev.AddHostEvidence(new Zone(SecurityZone.Internet));
-            PermissionSet permSet = SecurityManager.GetStandardSandbox(ev);
-            // We have to load ourself with full trust
-            StrongName razorEngineAssembly = typeof(RazorEngineService).Assembly.Evidence.GetHostEvidence<StrongName>();
-            
-            // We have to load Razor with full trust (so all methods are SecurityCritical)
-            // This is because we apply AllowPartiallyTrustedCallers to RazorEngine, because
-            // We need the untrusted (transparent) code to be able to inherit TemplateBase.
-            // Because in the normal environment/appdomain we run as full trust and the Razor assembly has no security attributes
-            // it will be completely SecurityCritical. 
-            // This means we have to mark a lot of our members SecurityCritical (which is fine).
-            // However in the sandbox domain we have partial trust and because razor has no Security attributes that means the
-            // code will be transparent (this is where we get a lot of exceptions, because we now have different security attributes)
-            // To work around this we give Razor full trust in the sandbox as well.
-            StrongName razorAssembly = typeof(RazorTemplateEngine).Assembly.Evidence.GetHostEvidence<StrongName>();
-            
-            AppDomainSetup adSetup = new AppDomainSetup();
-            
-            adSetup.ApplicationBase = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
-            AppDomain newDomain = AppDomain.CreateDomain("Sandbox", null, adSetup, permSet, razorEngineAssembly, razorAssembly);
-            return newDomain;
-        }
 
     }
     public class RazorEngineTemplate<T> : TemplateBase<T>

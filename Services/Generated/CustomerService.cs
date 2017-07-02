@@ -14,12 +14,15 @@ using Service.Pattern;
 
 namespace Service
 {
+    /// <summary></summary>
     public interface ICustomerService : IService<Customer>
     {
     }
 
+    /// <summary></summary>
     public partial class CustomerService : Service<Customer>, ICustomerService
     {
+        /// <summary></summary>
         public CustomerService(IRepositoryAsync<Customer> repository) : base(repository)
         {
         }

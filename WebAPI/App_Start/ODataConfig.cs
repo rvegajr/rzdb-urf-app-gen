@@ -8,7 +8,7 @@ https://genericunitofworkandrepositories.codeplex.com/  <== Awesome!  doesn't ge
 https://blog.longle.net/2013/10/09/upgrading-to-async-with-entity-framework-mvc-odata-asyncentitysetcontroller-kendo-ui-glimpse-generic-unit-of-work-repository-framework-v2-0/
 https://blogs.msdn.microsoft.com/davidhardin/2014/12/17/web-api-odata-v4-lessons-learned/
 */
-namespace WebAPI
+namespace WebApi
 {
     public static class ODataConfig
     {

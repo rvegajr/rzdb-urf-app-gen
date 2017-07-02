@@ -36,6 +36,10 @@ namespace RzDb.CodeGen
             mapping.AddWord("virus", "viruses");
             mapping.AddWord("Water", "Water");
             mapping.AddWord("water", "water");
+            mapping.AddWord("Lease", "Leases");
+            mapping.AddWord("lease", "leases");
+            mapping.AddWord("IncreaseDecrease", "IncreaseDecreases");
+            mapping.AddWord("increaseDecrease", "increaseDecreases");
 
             if (sQLDataTypeToDotNetDataType.Count == 0)
             {
@@ -71,7 +75,10 @@ namespace RzDb.CodeGen
                 sQLDataTypeToDotNetDataType.Add("varchar", "string");
                 sQLDataTypeToDotNetDataType.Add("varchar(max)", "string");
                 sQLDataTypeToDotNetDataType.Add("nvarchar(max)", "string");
+                sQLDataTypeToDotNetDataType.Add("varbinary(max)", "Byte[]");
                 sQLDataTypeToDotNetDataType.Add("xml", "Xml");
+                sQLDataTypeToDotNetDataType.Add("geometry", "DbGeometry");
+                sQLDataTypeToDotNetDataType.Add("geography", "DbGeography");
             }
 
         }
@@ -109,8 +116,7 @@ namespace RzDb.CodeGen
                 ret = "string";
             else
                 ret = (sQLDataTypeToDotNetDataType.ContainsKey(sqlType) ? sQLDataTypeToDotNetDataType[sqlType] : sqlType);
-            var isValidNullable = ( !(ret.Equals("string") || ret.Equals("Byte[]")) );
-            return ret + ((isNullable && isValidNullable) ? "?" : "");
+            return ret + ((isNullable && !(ret.Equals("string") || ret.Equals("DbGeometry") || ret.Equals("DbGeography") || ret.Equals("Byte[]")) ) ? "?" : "");
         }
 
         public static string ToPlural(this string word)
@@ -127,6 +133,16 @@ namespace RzDb.CodeGen
             }
 
             return (service.IsPlural(word) ? word : service.Pluralize(word));
+        }
+
+        public static string AsFormattedName(this string word)
+        {
+            if (word == null)
+                return null;
+            
+            if (word.EndsWith("ID")) return word.Substring(0, word.Length - 2);
+            return word;
+
         }
     }
 }

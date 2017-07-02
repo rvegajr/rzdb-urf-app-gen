@@ -8,7 +8,7 @@ using Unity.WebApi;
 using System;
 using DataAccess.Models;
 
-namespace WebAPI.Models
+namespace WebApi
 {
     public static class UnityConfig
     {
@@ -22,7 +22,8 @@ namespace WebAPI.Models
 
         private static void RegisterTypes(UnityContainer container)
         {
-            UnityConfigRegistrations.RegisterTypes( container );
+            UnityConfigRegistrationsGenerated.RegisterTypes(container);
+            UnityConfigRegistrations.RegisterTypes(container);
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
 

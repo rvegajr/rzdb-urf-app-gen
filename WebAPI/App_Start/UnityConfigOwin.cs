@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.Practices.Unity;
 using System.Linq;
-using WebAPI.Owin;
+using WebApi.Owin;
 
-namespace WebAPI
+namespace WebApi
 {
     public static class UnityOwinHelpers
     {

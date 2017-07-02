@@ -54,8 +54,11 @@
     <Reference Include="Faker.NET4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Faker.Net.1.0.3\lib\net40\Faker.NET4.dll</HintPath>
     </Reference>
-    <Reference Include="RazorEngine, Version=3.9.3.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\RazorEngine.3.9.3\lib\net45\RazorEngine.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -73,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\CodeGen.Base.cs" />
+    <Compile Include="Classes\ProjectWildcardPath.cs" />
+    <Compile Include="Classes\SwaggerJsonUtilities.cs" />
     <Compile Include="Console.cs" />
     <Compile Include="EdmxGen.Demo\EdmxGenDemoGenerator.cs" />
     <Compile Include="Ef6Context\Ef6ContextGenerator.cs" />
@@ -81,12 +86,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\SchemaObjects.cs" />
     <Compile Include="Classes\StringExtentions.cs" />
-    <Compile Include="Resources\NW.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NW.edmx</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="UnitTests\UnitTestsGenerator.cs" />
     <Compile Include="UnityRegistrations\UnityRegistrationsGenerator.cs" />
     <Compile Include="URFService\URFServiceGenerator.cs" />
@@ -108,15 +107,6 @@
     <None Include="ODataRegistrations\ODataRegistrationsTemplate.cshtml" />
     <None Include="packages.config" />
     <None Include="README.md" />
-    <Content Include="Resources\NW.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NW.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="Resources\NW.edmx.diagram">
-      <DependentUpon>NW.edmx</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="UnitTests\UnitTestsTemplate.cshtml" />
     <None Include="UnityRegistrations\UnityRegistrationsTemplate.cshtml" />
     <None Include="URFService\URFServiceTemplate.cshtml" />

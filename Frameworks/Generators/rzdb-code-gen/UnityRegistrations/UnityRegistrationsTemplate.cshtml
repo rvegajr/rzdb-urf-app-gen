@@ -16,41 +16,49 @@ using Repository.Pattern.Ef6;
 using Repository.Pattern.Repositories;
 using Repository.Pattern.UnitOfWork;
 using DataAccess.Models;
-namespace WebAPI
+namespace WebApi
 {
+    /// <summary></summary>
     public enum UnityRegistrationLifetimeManagerType {
+        /// <summary></summary>
         PerRequest,
+        /// <summary></summary>
         ContainerControlled,
+        /// <summary></summary>
         NotControlled
     }
-    public static class UnityConfigRegistrations
+    /// <summary></summary>
+    public static class UnityConfigRegistrationsGenerated
     {
+        /// <summary></summary>
         public static void RegisterTypes(IUnityContainer container)
         {
             RegisterTypes(container, UnityRegistrationLifetimeManagerType.PerRequest);
         }
+        /// <summary></summary>
         public static void RegisterTypesOwin(IUnityContainer container)
         {
             RegisterTypes(container, UnityRegistrationLifetimeManagerType.NotControlled);
         }
+        /// <summary></summary>
         public static void RegisterTypes(IUnityContainer container, UnityRegistrationLifetimeManagerType lifetimeMangerType)
         {
             if (lifetimeMangerType == UnityRegistrationLifetimeManagerType.ContainerControlled)
             {
                 container
-                    .RegisterType<IDataContextAsync, NWEntities>(new ContainerControlledLifetimeManager())
+                    .RegisterType<IDataContextAsync, @_Model.Name>(new ContainerControlledLifetimeManager())
                     .RegisterType<IUnitOfWorkAsync, UnitOfWork>(new ContainerControlledLifetimeManager());
             }
             else if (lifetimeMangerType == UnityRegistrationLifetimeManagerType.PerRequest)
             {
                 container
-                    .RegisterType<IDataContextAsync, NWEntities>(new PerRequestLifetimeManager())
+                    .RegisterType<IDataContextAsync, @_Model.Name>(new PerRequestLifetimeManager())
                     .RegisterType<IUnitOfWorkAsync, UnitOfWork>(new PerRequestLifetimeManager());
             }
             else
             {
                 container
-                    .RegisterType<IDataContextAsync, NWEntities>()
+                    .RegisterType<IDataContextAsync, @_Model.Name>()
                     .RegisterType<IUnitOfWorkAsync, UnitOfWork>();
             }
             container @foreach (string key in _Model.Keys) {<t>

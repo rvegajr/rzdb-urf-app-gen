@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 
-namespace WebAPI
+namespace WebApi
 {
     public class GlobalExceptionHandler : ExceptionHandler
     {

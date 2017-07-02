@@ -26,6 +26,60 @@ namespace Tests.RouteTests
                 Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less for Customers");
             }
 
+
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Customers?%24expand=DeliveryMethod&%24top=10"))
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Customers with Expand of DeliveryMethod");
+            }
+
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Customers?%24expand=BuyingGroup&%24top=10"))
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Customers with Expand of BuyingGroup");
+            }
+
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Customers?%24expand=CustomerCategory&%24top=10"))
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Customers with Expand of CustomerCategory");
+            }
+
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Customers?%24expand=DeliveryCityID&%24top=10"))
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Customers with Expand of DeliveryCityID");
+            }
+
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Customers?%24expand=PostalCityID&%24top=10"))
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Customers with Expand of PostalCityID");
+            }
+
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Customers?%24expand=AlternateContactPersonID&%24top=10"))
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Customers with Expand of AlternateContactPersonID");
+            }
+
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Customers?%24expand=LastEditedBy&%24top=10"))
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Customers with Expand of LastEditedBy");
+            }
+
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Customers?%24expand=PrimaryContactPersonID&%24top=10"))
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Customers with Expand of PrimaryContactPersonID");
+            }
+
+            using (var response = await HttpClient.GetAsync("http://testserver/api/Customers?%24expand=Customer&%24top=10"))
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.OK, "Return Get 10 or less Customers with Expand of Customer");
+            }
  
         }
     }

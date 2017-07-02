@@ -11,25 +11,46 @@ using System.Web.Http;
 using ODataV4 = System.Web.OData;
 using DataAccess.Models;
 
-namespace WebAPI
+namespace WebApi
 {
         public static class ODataRegistrations
     {
         public static void Register(ODataV4.Builder.ODataModelBuilder builder4)
         { 
-                builder4.EntitySet<Category>("Categories");
-                builder4.EntitySet<CustomerCustomerDemo>("CustomerCustomerDemo");
-                builder4.EntitySet<CustomerDemographic>("CustomerDemographics");
-                builder4.EntitySet<Customer>("Customers");
-                builder4.EntitySet<Employee>("Employees");
-                builder4.EntitySet<EmployeeTerritory>("EmployeeTerritories");
-                builder4.EntitySet<OrderDetail>("OrderDetails");
-                builder4.EntitySet<Order>("Orders");
-                builder4.EntitySet<Product>("Products");
-                builder4.EntitySet<Region>("Region");
-                builder4.EntitySet<Shipper>("Shippers");
+                builder4.EntitySet<City>("Cities");
+                builder4.EntitySet<Country>("Countries");
+                builder4.EntitySet<DeliveryMethod>("DeliveryMethods");
+                builder4.EntitySet<PaymentMethod>("PaymentMethods");
+                builder4.EntitySet<Person>("People");
+                builder4.EntitySet<StateProvince>("StateProvinces");
+                builder4.EntitySet<SystemParameter>("SystemParameters");
+                builder4.EntitySet<TransactionType>("TransactionTypes");
+                builder4.EntitySet<PurchaseOrderLine>("PurchaseOrderLines");
+                builder4.EntitySet<PurchaseOrder>("PurchaseOrders");
+                builder4.EntitySet<SupplierCategory>("SupplierCategories");
                 builder4.EntitySet<Supplier>("Suppliers");
-                builder4.EntitySet<Territory>("Territories");    			;
+                builder4.EntitySet<SupplierTransaction>("SupplierTransactions");
+                builder4.EntitySet<BuyingGroup>("BuyingGroups");
+                builder4.EntitySet<CustomerCategory>("CustomerCategories");
+                builder4.EntitySet<Customer>("Customers");
+                builder4.EntitySet<CustomerTransaction>("CustomerTransactions");
+                builder4.EntitySet<InvoiceLine>("InvoiceLines");
+                builder4.EntitySet<Invoice>("Invoices");
+                builder4.EntitySet<OrderLine>("OrderLines");
+                builder4.EntitySet<Order>("Orders");
+                builder4.EntitySet<SpecialDeal>("SpecialDeals");
+                builder4.EntitySet<ColdRoomTemperature>("ColdRoomTemperatures");
+                builder4.EntitySet<Color>("Colors");
+                builder4.EntitySet<PackageType>("PackageTypes");
+                builder4.EntitySet<StockGroup>("StockGroups");
+                builder4.EntitySet<StockItemHolding>("StockItemHoldings");
+                builder4.EntitySet<StockItem>("StockItems");
+                builder4.EntitySet<StockItemStockGroup>("StockItemStockGroups");
+                builder4.EntitySet<StockItemTransaction>("StockItemTransactions");
+                builder4.EntitySet<VehicleTemperature>("VehicleTemperatures");
+                builder4.EntitySet<VwCustomer>("VwCustomers");
+                builder4.EntitySet<VwSupplier>("VwSuppliers");
+                builder4.EntitySet<VwVehicleTemperature>("VwVehicleTemperatures");    			;
         }
     }
 

@@ -10,7 +10,7 @@ using System.Web.Http.Dispatcher;
 using Microsoft.Practices.Unity;
 using System.Web.Http.ExceptionHandling;
 
-namespace WebAPI
+namespace WebApi
 {
     public static class WebApiConfig
     {
@@ -51,7 +51,7 @@ namespace WebAPI
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "webapi/{controller}/{id}",
+                routeTemplate: "WebApi/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 
