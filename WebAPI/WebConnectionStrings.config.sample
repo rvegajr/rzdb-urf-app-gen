@@ -1,4 +1,4 @@
 ﻿<connectionStrings>
     <clear/>
-    <add name="WideWorldImportersEntities" connectionString="data source=.;initial catalog=Northwind;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
+    <add name="WideWorldImportersEntities" connectionString="data source=.;initial catalog=WideWorldImporters;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
 </connectionStrings>
