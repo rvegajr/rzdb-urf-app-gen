@@ -16,73 +16,24 @@ This applicaiton will compile in both VS2015 and VS2017.  There is a known issue
 - Navigate to DataServices\DataAccess\Models\WideWorldImporters.edmx
 - On the Diagram Canvas,  select Edit->Select All or click anywhere in the canvas and press Ctrl+A (to select all objects).  Then Delete them all (acknowledging that you want them all deleted),  BUT DO NOT SAVE!! 
 - Once cleared, click on the edmx designer canvas again, right click and select "Update Model from Database"
-- Either create a new connection or use an existing one, but do not save the connection string unless you mean to.  When you work with other people with different connection strings,  you may run into some if you commit this change. Click Next.
-- Select Tables and Views, leave Pluralize or Singularize Object Names Empty, Check Include foriegn keys, uncheck Import Selected Stored Procedures and functions into entity model.
+- Either create a new connection or use an existing one, but do not save the connection string unless you mean to.  When you work with other people with different connection strings,  you may run into some problems if you commit this change. Click Next.
+- Select Tables, do not check views or stored procedures. Leave Pluralize or Singularize Object Names Empty, Check Include foriegn keys, uncheck Import Selected Stored Procedures and functions into entity model.
 - Select Finish and in a minute or so, you will see your objects and their relationship. Click Ctrl+S to start the save.    This should trigger the t4 template that handles the code generation found in \DataAccess\Models\CodeGenerations.tt.  The app may ask you to reload the solutions (this is in order to handle adding/removing songs from the project).  Click Reload All and if it asks you to save DataAccess project, select yes.
-- NAvigate to \DataAccess\Models\WideWorldImporters.tt, 
- 
+- I have noticed some quirkiness when it coems to this method of code generation.  Just to be safe,  Go to \DataAccess\Models\CodeGenerations.tt, add a space at the end of a line of code and press Ctrl+S or Save.  This will trigger another code generation process.   I am working in a removing edmx entirely from this build pipeline as it appears to be phased out by microsoft,  but right now all the benefits outweigh this pain. 
+- Once the application has reloaded,  right click on the soluton and build.  Swagger UI will come up and your will be able to interact with your app using OData.
 
 ### Conventions to keep in mind
 - Your column names cannot match any object names.  This is because when generator writes the POCO classes,  having properties with the same names in one object will cause issues.
 - Object names must be unique (meaning SchemaA.Tablename and SchemaB.Tablename) will cause the same issue as above.  This goes for schema objects in tables/views/stored procs/etc.  
 - Odata works with properly defined forigh keys.  You will get the best benefit if you adhere to standard normalization principles.  
-
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+- POCO classes will not be generated for temporal tables
+- Composite Keys are not fully supported yet
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [URF Framework](https://genericunitofworkandrepositories.codeplex.com/) - The framework that made it easy for me to apply code generation
+* [RazorEngine](https://antaris.github.io/RazorEngine/) - The Template framework that allows me to debug code templates (and beats the pants of T4 templates)
+* [RazorEngine Database Code Generator](https://github.com/rvegajr/rzdb-code-gen) - Code generator built of RazorEngine that consumes EDMX files into a simplified schema thus making it easier to work with
 
 ## Contributing
 
@@ -90,20 +41,18 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/rvegajr/rzdb-urf-app-gen/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* Ricky Vega - *Initial work* - [rvegajr](https://github.com/rvegajr)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/rvegajr/rzdb-urf-app-gen/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
+## Known Issues
+- Spatial Datatypes could not be rendered - Making a call to Cities may trigger an error where the Api cannot render DbGeometry.  The root of the project contains a version of the SQL clr data types that will install them in the GAC.  You might get luck and not have to restart after you install them,  but I wasn't that lucky.
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
