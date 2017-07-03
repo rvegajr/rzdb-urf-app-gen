@@ -16,7 +16,7 @@ using System.Data.Entity.Spatial;
 namespace DataAccess.Models
 {
     /// <summary></summary>
-    [Table("StockItems")]
+    [Table("StockItems", Schema = "Warehouse")]
     public partial class StockItem : Entity
     {
 

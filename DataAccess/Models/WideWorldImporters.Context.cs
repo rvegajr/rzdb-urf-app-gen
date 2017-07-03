@@ -16,10 +16,7 @@ namespace DataAccess.Models
     public partial class WideWorldImportersEntities : DataContext
     {
         /// <summary></summary>
-        public WideWorldImportersEntities() : base("name=WideWorldImportersEntities"){
-            //Disable initializer
-            Database.SetInitializer<WideWorldImportersEntities>(null);
-        }
+        public WideWorldImportersEntities() : base("name=WideWorldImportersEntities"){}
 
         /// <summary></summary>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

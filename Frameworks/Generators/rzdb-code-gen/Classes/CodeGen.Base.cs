@@ -302,11 +302,20 @@ namespace RzDb.CodeGen
                         Console.WriteLine("Error: could not read Name Attribute");
                     }
                     var name = ele.Attribute("Name").Value;
+                    var schemaName = "";
+                    if (ele.Attribute("Schema") != null)
+                    {
+                        schemaName = ele.Attribute("Schema").Value;
+                    }
                     XNamespace w = "http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator";
                     var entityType = ele.Attribute(w + "Type");
                     if (entityType != null)
                     {
-                        if (schema.ContainsKey(name)) schema[name].Type = entityType.Value.ToSingular();
+                        if (schema.ContainsKey(name))
+                        {
+                            schema[name].Type = entityType.Value.ToSingular();
+                            schema[name].Schema = schemaName;
+                        }
                     }
                 }
 

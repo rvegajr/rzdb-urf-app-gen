@@ -16,7 +16,7 @@ using System.Data.Entity.Spatial;
 namespace DataAccess.Models
 {
     /// <summary></summary>
-    [Table("SystemParameters")]
+    [Table("SystemParameters", Schema = "Application")]
     public partial class SystemParameter : Entity
     {
 

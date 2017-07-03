@@ -31,7 +31,7 @@ using System.Data.Entity.Spatial;
 namespace DataAccess.Models
 {
     /// <summary></summary>
-    [Table("@entityName")]
+    [Table("@entityName"@((_Model[entityName].Schema.Length>0) ? @", Schema = """ + _Model[entityName].Schema + @""")" : "" )]
     public partial class @entityName.ToSingular() : Entity
     {
 

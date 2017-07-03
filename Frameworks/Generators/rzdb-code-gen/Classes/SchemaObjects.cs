@@ -240,6 +240,7 @@ namespace RzDb.CodeGen
             this.PrimaryKeys = new PrimaryKeyProperties(this);
         }
         public string Name { get; set; }
+        public string Schema { get; set; }
         public string Type { get; set; }
         public Dictionary<string, Property> Properties = new Dictionary<string, Property>();
         public Relationships Relationships = new Relationships();

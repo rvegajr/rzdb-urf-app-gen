@@ -16,7 +16,7 @@ using System.Data.Entity.Spatial;
 namespace DataAccess.Models
 {
     /// <summary></summary>
-    [Table("Countries")]
+    [Table("Countries", Schema = "Application")]
     public partial class Country : Entity
     {
 
