@@ -16,7 +16,10 @@ namespace DataAccess.Models
     public partial class WideWorldImportersEntities : DataContext
     {
         /// <summary></summary>
-        public WideWorldImportersEntities() : base("name=WideWorldImportersEntities"){}
+        public WideWorldImportersEntities() : base("name=WideWorldImportersEntities"){
+            //Disable initializer
+            Database.SetInitializer<WideWorldImportersEntities>(null);
+        }
 
         /// <summary></summary>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -84,12 +87,6 @@ namespace DataAccess.Models
         /// <summary></summary>
         public virtual DbSet<StockItemTransaction> StockItemTransactions { get; set; } 
         /// <summary></summary>
-        public virtual DbSet<VehicleTemperature> VehicleTemperatures { get; set; } 
-        /// <summary></summary>
-        public virtual DbSet<VwCustomer> VwCustomers { get; set; } 
-        /// <summary></summary>
-        public virtual DbSet<VwSupplier> VwSuppliers { get; set; } 
-        /// <summary></summary>
-        public virtual DbSet<VwVehicleTemperature> VwVehicleTemperatures { get; set; }     }
+        public virtual DbSet<VehicleTemperature> VehicleTemperatures { get; set; }     }
 }
 

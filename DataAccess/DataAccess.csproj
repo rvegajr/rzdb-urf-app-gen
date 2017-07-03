@@ -97,6 +97,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Models\Generated\*.cs" />
   </ItemGroup>
 </Project>

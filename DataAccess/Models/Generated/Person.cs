@@ -167,7 +167,7 @@ namespace DataAccess.Models
             
         /// <summary></summary> 
          [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-         [InverseProperty("LastEditedBy")]
+         [InverseProperty("LastEditedByPerson")]
          public virtual ICollection<PurchaseOrder> PurchaseOrders_LastEditedBy { get; set; }
             
         /// <summary></summary> 
@@ -186,7 +186,7 @@ namespace DataAccess.Models
             
         /// <summary></summary> 
          [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-         [InverseProperty("LastEditedBy")]
+         [InverseProperty("LastEditedByPerson")]
          public virtual ICollection<Supplier> Suppliers_LastEditedBy { get; set; }
             
         /// <summary></summary> 
@@ -213,7 +213,7 @@ namespace DataAccess.Models
             
         /// <summary></summary> 
          [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-         [InverseProperty("LastEditedBy")]
+         [InverseProperty("LastEditedByPerson")]
          public virtual ICollection<Customer> Customers_LastEditedBy { get; set; }
             
         /// <summary></summary> 
@@ -236,7 +236,7 @@ namespace DataAccess.Models
             
         /// <summary></summary> 
          [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-         [InverseProperty("LastEditedBy")]
+         [InverseProperty("LastEditedByPerson")]
          public virtual ICollection<Invoice> Invoices_LastEditedBy { get; set; }
             
         /// <summary></summary> 
@@ -260,7 +260,7 @@ namespace DataAccess.Models
             
         /// <summary></summary> 
          [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-         [InverseProperty("LastEditedBy")]
+         [InverseProperty("LastEditedByPerson")]
          public virtual ICollection<Order> Orders_LastEditedBy { get; set; }
             
         /// <summary></summary> 

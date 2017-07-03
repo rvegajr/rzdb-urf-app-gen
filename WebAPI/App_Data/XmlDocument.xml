@@ -1593,51 +1593,6 @@
         <member name="M:WebApi.Controllers.VehicleTemperaturesController.Dispose(System.Boolean)">
             <summary></summary>
         </member>
-        <member name="T:WebApi.Controllers.VwCustomersController">
-            <summary></summary>
-        </member>
-        <member name="M:WebApi.Controllers.VwCustomersController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IVwCustomerService)">
-            <summary></summary>
-        </member>
-        <member name="M:WebApi.Controllers.VwCustomersController.GetVwCustomers">
-            <summary></summary>
-        </member>
-        <member name="M:WebApi.Controllers.VwCustomersController.GetVwCustomerFromId(System.Int32,System.String,System.String,System.String,System.String)">
-            <summary></summary>
-        </member>
-        <member name="M:WebApi.Controllers.VwCustomersController.GetVwCustomer(System.Int32,System.String,System.String,System.String,System.String)">
-            <summary></summary>
-        </member>
-        <member name="T:WebApi.Controllers.VwSuppliersController">
-            <summary></summary>
-        </member>
-        <member name="M:WebApi.Controllers.VwSuppliersController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IVwSupplierService)">
-            <summary></summary>
-        </member>
-        <member name="M:WebApi.Controllers.VwSuppliersController.GetVwSuppliers">
-            <summary></summary>
-        </member>
-        <member name="M:WebApi.Controllers.VwSuppliersController.GetVwSupplierFromId(System.Int32,System.String,System.String,System.String,System.String)">
-            <summary></summary>
-        </member>
-        <member name="M:WebApi.Controllers.VwSuppliersController.GetVwSupplier(System.Int32,System.String,System.String,System.String,System.String)">
-            <summary></summary>
-        </member>
-        <member name="T:WebApi.Controllers.VwVehicleTemperaturesController">
-            <summary></summary>
-        </member>
-        <member name="M:WebApi.Controllers.VwVehicleTemperaturesController.#ctor(Repository.Pattern.UnitOfWork.IUnitOfWorkAsync,Service.IVwVehicleTemperatureService)">
-            <summary></summary>
-        </member>
-        <member name="M:WebApi.Controllers.VwVehicleTemperaturesController.GetVwVehicleTemperatures">
-            <summary></summary>
-        </member>
-        <member name="M:WebApi.Controllers.VwVehicleTemperaturesController.GetVwVehicleTemperatureFromId(System.Int64,System.String,System.Int32,System.DateTime,System.Decimal)">
-            <summary></summary>
-        </member>
-        <member name="M:WebApi.Controllers.VwVehicleTemperaturesController.GetVwVehicleTemperature(System.Int64,System.String,System.Int32,System.DateTime,System.Decimal)">
-            <summary></summary>
-        </member>
         <member name="T:RouteConfig">
             <summary />
         </member>

@@ -47,10 +47,7 @@ namespace WebApi
                 builder4.EntitySet<StockItem>("StockItems");
                 builder4.EntitySet<StockItemStockGroup>("StockItemStockGroups");
                 builder4.EntitySet<StockItemTransaction>("StockItemTransactions");
-                builder4.EntitySet<VehicleTemperature>("VehicleTemperatures");
-                builder4.EntitySet<VwCustomer>("VwCustomers");
-                builder4.EntitySet<VwSupplier>("VwSuppliers");
-                builder4.EntitySet<VwVehicleTemperature>("VwVehicleTemperatures");    			;
+                builder4.EntitySet<VehicleTemperature>("VehicleTemperatures");    			;
         }
     }
 

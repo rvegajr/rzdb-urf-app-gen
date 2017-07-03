@@ -961,71 +961,6 @@ warning 6002: The table/view 'WideWorldImporters.Warehouse.StockItems_Archive' d
           <Property Name="FullSensorData" Type="nvarchar" MaxLength="1000" />
           <Property Name="CompressedSensorData" Type="varbinary(max)" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'WideWorldImporters.Website.VwCustomers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="VwCustomers">
-          <Key>
-            <PropertyRef Name="CustomerID" />
-            <PropertyRef Name="CustomerName" />
-            <PropertyRef Name="PhoneNumber" />
-            <PropertyRef Name="FaxNumber" />
-            <PropertyRef Name="WebsiteURL" />
-          </Key>
-          <Property Name="CustomerID" Type="int" Nullable="false" />
-          <Property Name="CustomerName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="CustomerCategoryName" Type="nvarchar" MaxLength="50" />
-          <Property Name="PrimaryContact" Type="nvarchar" MaxLength="50" />
-          <Property Name="AlternateContact" Type="nvarchar" MaxLength="50" />
-          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="FaxNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="BuyingGroupName" Type="nvarchar" MaxLength="50" />
-          <Property Name="WebsiteURL" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="DeliveryMethod" Type="nvarchar" MaxLength="50" />
-          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
-          <Property Name="DeliveryLocation" Type="geography" />
-          <Property Name="DeliveryRun" Type="nvarchar" MaxLength="5" />
-          <Property Name="RunPosition" Type="nvarchar" MaxLength="5" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'WideWorldImporters.Website.VwSuppliers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="VwSuppliers">
-          <Key>
-            <PropertyRef Name="SupplierID" />
-            <PropertyRef Name="SupplierName" />
-            <PropertyRef Name="PhoneNumber" />
-            <PropertyRef Name="FaxNumber" />
-            <PropertyRef Name="WebsiteURL" />
-          </Key>
-          <Property Name="SupplierID" Type="int" Nullable="false" />
-          <Property Name="SupplierName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="SupplierCategoryName" Type="nvarchar" MaxLength="50" />
-          <Property Name="PrimaryContact" Type="nvarchar" MaxLength="50" />
-          <Property Name="AlternateContact" Type="nvarchar" MaxLength="50" />
-          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="FaxNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="WebsiteURL" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="DeliveryMethod" Type="nvarchar" MaxLength="50" />
-          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
-          <Property Name="DeliveryLocation" Type="geography" />
-          <Property Name="SupplierReference" Type="nvarchar" MaxLength="20" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'WideWorldImporters.Website.VwVehicleTemperatures' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="VwVehicleTemperatures">
-          <Key>
-            <PropertyRef Name="VehicleTemperatureID" />
-            <PropertyRef Name="VehicleRegistration" />
-            <PropertyRef Name="ChillerSensorNumber" />
-            <PropertyRef Name="RecordedWhen" />
-            <PropertyRef Name="Temperature" />
-          </Key>
-          <Property Name="VehicleTemperatureID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="VehicleRegistration" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="ChillerSensorNumber" Type="int" Nullable="false" />
-          <Property Name="RecordedWhen" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="Temperature" Type="decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="FullSensorData" Type="nvarchar" MaxLength="1000" />
-        </EntityType>
         <Association Name="FK_Application_Cities_Application_People">
           <End Role="People" Type="Self.People" Multiplicity="1" />
           <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
@@ -2491,50 +2426,6 @@ warning 6002: The table/view 'WideWorldImporters.Website.VwVehicleTemperatures' 
     [StockItems_Archive].[ValidTo] AS [ValidTo]
     FROM [Warehouse].[StockItems_Archive] AS [StockItems_Archive]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="VwCustomers" EntityType="Self.VwCustomers" store:Type="Views" store:Schema="Website">
-            <DefiningQuery>SELECT 
-    [VwCustomers].[CustomerID] AS [CustomerID], 
-    [VwCustomers].[CustomerName] AS [CustomerName], 
-    [VwCustomers].[CustomerCategoryName] AS [CustomerCategoryName], 
-    [VwCustomers].[PrimaryContact] AS [PrimaryContact], 
-    [VwCustomers].[AlternateContact] AS [AlternateContact], 
-    [VwCustomers].[PhoneNumber] AS [PhoneNumber], 
-    [VwCustomers].[FaxNumber] AS [FaxNumber], 
-    [VwCustomers].[BuyingGroupName] AS [BuyingGroupName], 
-    [VwCustomers].[WebsiteURL] AS [WebsiteURL], 
-    [VwCustomers].[DeliveryMethod] AS [DeliveryMethod], 
-    [VwCustomers].[CityName] AS [CityName], 
-    [VwCustomers].[DeliveryLocation] AS [DeliveryLocation], 
-    [VwCustomers].[DeliveryRun] AS [DeliveryRun], 
-    [VwCustomers].[RunPosition] AS [RunPosition]
-    FROM [Website].[VwCustomers] AS [VwCustomers]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="VwSuppliers" EntityType="Self.VwSuppliers" store:Type="Views" store:Schema="Website">
-            <DefiningQuery>SELECT 
-    [VwSuppliers].[SupplierID] AS [SupplierID], 
-    [VwSuppliers].[SupplierName] AS [SupplierName], 
-    [VwSuppliers].[SupplierCategoryName] AS [SupplierCategoryName], 
-    [VwSuppliers].[PrimaryContact] AS [PrimaryContact], 
-    [VwSuppliers].[AlternateContact] AS [AlternateContact], 
-    [VwSuppliers].[PhoneNumber] AS [PhoneNumber], 
-    [VwSuppliers].[FaxNumber] AS [FaxNumber], 
-    [VwSuppliers].[WebsiteURL] AS [WebsiteURL], 
-    [VwSuppliers].[DeliveryMethod] AS [DeliveryMethod], 
-    [VwSuppliers].[CityName] AS [CityName], 
-    [VwSuppliers].[DeliveryLocation] AS [DeliveryLocation], 
-    [VwSuppliers].[SupplierReference] AS [SupplierReference]
-    FROM [Website].[VwSuppliers] AS [VwSuppliers]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="VwVehicleTemperatures" EntityType="Self.VwVehicleTemperatures" store:Type="Views" store:Schema="Website">
-            <DefiningQuery>SELECT 
-    [VwVehicleTemperatures].[VehicleTemperatureID] AS [VehicleTemperatureID], 
-    [VwVehicleTemperatures].[VehicleRegistration] AS [VehicleRegistration], 
-    [VwVehicleTemperatures].[ChillerSensorNumber] AS [ChillerSensorNumber], 
-    [VwVehicleTemperatures].[RecordedWhen] AS [RecordedWhen], 
-    [VwVehicleTemperatures].[Temperature] AS [Temperature], 
-    [VwVehicleTemperatures].[FullSensorData] AS [FullSensorData]
-    FROM [Website].[VwVehicleTemperatures] AS [VwVehicleTemperatures]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Application_Cities_Application_People" Association="Self.FK_Application_Cities_Application_People">
             <End Role="People" EntitySet="People" />
             <End Role="Cities" EntitySet="Cities" />
@@ -2981,9 +2872,6 @@ warning 6002: The table/view 'WideWorldImporters.Website.VwVehicleTemperatures' 
           <EntitySet Name="PackageTypes_Archive" EntityType="WideWorldImportersModel.PackageTypes_Archive" />
           <EntitySet Name="StockGroups_Archive" EntityType="WideWorldImportersModel.StockGroups_Archive" />
           <EntitySet Name="StockItems_Archive" EntityType="WideWorldImportersModel.StockItems_Archive" />
-          <EntitySet Name="VwCustomers" EntityType="WideWorldImportersModel.VwCustomers" />
-          <EntitySet Name="VwSuppliers" EntityType="WideWorldImportersModel.VwSuppliers" />
-          <EntitySet Name="VwVehicleTemperatures" EntityType="WideWorldImportersModel.VwVehicleTemperatures" />
           <AssociationSet Name="FK_Application_Cities_Application_People" Association="WideWorldImportersModel.FK_Application_Cities_Application_People">
             <End Role="People" EntitySet="People" />
             <End Role="Cities" EntitySet="Cities" />
@@ -4494,65 +4382,6 @@ warning 6002: The table/view 'WideWorldImporters.Website.VwVehicleTemperatures' 
           <Property Name="LastEditedBy" Type="Int32" Nullable="false" />
           <Property Name="ValidFrom" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="ValidTo" Type="DateTime" Nullable="false" Precision="7" />
-        </EntityType>
-        <EntityType Name="VwCustomers">
-          <Key>
-            <PropertyRef Name="CustomerID" />
-            <PropertyRef Name="CustomerName" />
-            <PropertyRef Name="PhoneNumber" />
-            <PropertyRef Name="FaxNumber" />
-            <PropertyRef Name="WebsiteURL" />
-          </Key>
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PrimaryContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AlternateContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="FaxNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="BuyingGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="WebsiteURL" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="DeliveryMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DeliveryLocation" Type="Geography" />
-          <Property Name="DeliveryRun" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="RunPosition" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="VwSuppliers">
-          <Key>
-            <PropertyRef Name="SupplierID" />
-            <PropertyRef Name="SupplierName" />
-            <PropertyRef Name="PhoneNumber" />
-            <PropertyRef Name="FaxNumber" />
-            <PropertyRef Name="WebsiteURL" />
-          </Key>
-          <Property Name="SupplierID" Type="Int32" Nullable="false" />
-          <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PrimaryContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AlternateContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="FaxNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="WebsiteURL" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="DeliveryMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DeliveryLocation" Type="Geography" />
-          <Property Name="SupplierReference" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="VwVehicleTemperatures">
-          <Key>
-            <PropertyRef Name="VehicleTemperatureID" />
-            <PropertyRef Name="VehicleRegistration" />
-            <PropertyRef Name="ChillerSensorNumber" />
-            <PropertyRef Name="RecordedWhen" />
-            <PropertyRef Name="Temperature" />
-          </Key>
-          <Property Name="VehicleTemperatureID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="VehicleRegistration" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ChillerSensorNumber" Type="Int32" Nullable="false" />
-          <Property Name="RecordedWhen" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Temperature" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-          <Property Name="FullSensorData" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Application_Cities_Application_People">
           <End Type="WideWorldImportersModel.People" Role="People" Multiplicity="1" />
@@ -6578,56 +6407,6 @@ warning 6002: The table/view 'WideWorldImporters.Website.VwVehicleTemperatures' 
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="StockItemName" ColumnName="StockItemName" />
                 <ScalarProperty Name="StockItemID" ColumnName="StockItemID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VwCustomers">
-            <EntityTypeMapping TypeName="WideWorldImportersModel.VwCustomers">
-              <MappingFragment StoreEntitySet="VwCustomers">
-                <ScalarProperty Name="RunPosition" ColumnName="RunPosition" />
-                <ScalarProperty Name="DeliveryRun" ColumnName="DeliveryRun" />
-                <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="DeliveryMethod" ColumnName="DeliveryMethod" />
-                <ScalarProperty Name="WebsiteURL" ColumnName="WebsiteURL" />
-                <ScalarProperty Name="BuyingGroupName" ColumnName="BuyingGroupName" />
-                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="AlternateContact" ColumnName="AlternateContact" />
-                <ScalarProperty Name="PrimaryContact" ColumnName="PrimaryContact" />
-                <ScalarProperty Name="CustomerCategoryName" ColumnName="CustomerCategoryName" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VwSuppliers">
-            <EntityTypeMapping TypeName="WideWorldImportersModel.VwSuppliers">
-              <MappingFragment StoreEntitySet="VwSuppliers">
-                <ScalarProperty Name="SupplierReference" ColumnName="SupplierReference" />
-                <ScalarProperty Name="DeliveryLocation" ColumnName="DeliveryLocation" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="DeliveryMethod" ColumnName="DeliveryMethod" />
-                <ScalarProperty Name="WebsiteURL" ColumnName="WebsiteURL" />
-                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="AlternateContact" ColumnName="AlternateContact" />
-                <ScalarProperty Name="PrimaryContact" ColumnName="PrimaryContact" />
-                <ScalarProperty Name="SupplierCategoryName" ColumnName="SupplierCategoryName" />
-                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
-                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VwVehicleTemperatures">
-            <EntityTypeMapping TypeName="WideWorldImportersModel.VwVehicleTemperatures">
-              <MappingFragment StoreEntitySet="VwVehicleTemperatures">
-                <ScalarProperty Name="FullSensorData" ColumnName="FullSensorData" />
-                <ScalarProperty Name="Temperature" ColumnName="Temperature" />
-                <ScalarProperty Name="RecordedWhen" ColumnName="RecordedWhen" />
-                <ScalarProperty Name="ChillerSensorNumber" ColumnName="ChillerSensorNumber" />
-                <ScalarProperty Name="VehicleRegistration" ColumnName="VehicleRegistration" />
-                <ScalarProperty Name="VehicleTemperatureID" ColumnName="VehicleTemperatureID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -5,7 +5,7 @@
 <#@ import namespace="EnvDTE" #>
 <#@ import namespace="System.Runtime.InteropServices" #>  
 <#@ output extension=".txt"#>
-<#   
+<#     
 try {      
 	WriteLineToOutput("\nBegin Generating Code based off EDMX file");
 	var solutionDir = Host.ResolveAssemblyReference("$(SolutionDir)");

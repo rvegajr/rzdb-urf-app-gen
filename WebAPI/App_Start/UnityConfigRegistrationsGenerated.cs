@@ -120,13 +120,7 @@ namespace WebApi
                 .RegisterType<IRepositoryAsync<StockItemTransaction>, Repository<StockItemTransaction>>()
                 .RegisterType<Service.IStockItemTransactionService, Service.StockItemTransactionService>()   
                 .RegisterType<IRepositoryAsync<VehicleTemperature>, Repository<VehicleTemperature>>()
-                .RegisterType<Service.IVehicleTemperatureService, Service.VehicleTemperatureService>()   
-                .RegisterType<IRepositoryAsync<VwCustomer>, Repository<VwCustomer>>()
-                .RegisterType<Service.IVwCustomerService, Service.VwCustomerService>()   
-                .RegisterType<IRepositoryAsync<VwSupplier>, Repository<VwSupplier>>()
-                .RegisterType<Service.IVwSupplierService, Service.VwSupplierService>()   
-                .RegisterType<IRepositoryAsync<VwVehicleTemperature>, Repository<VwVehicleTemperature>>()
-                .RegisterType<Service.IVwVehicleTemperatureService, Service.VwVehicleTemperatureService>()                  ;
+                .RegisterType<Service.IVehicleTemperatureService, Service.VehicleTemperatureService>()                  ;
         }
     }
 }
